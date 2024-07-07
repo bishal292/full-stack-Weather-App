@@ -1,13 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weatheria</title>
+    <meta name="title" content="Weatheria">
+    <meta name="description" content="Weatheria is a weather app made by Bishal singh">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon">
 
+    <!-- 
+        FavIcon
+     -->
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+
+    <!-- 
+    Stlesheet Links
+    -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <!-- 
+    Google Fonts
+     -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- 
+        Material Icons
+    -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 </head>
+
 <body>
-    
+    <!-- 
+        Header
+    -->
+
+    <header class="container">
+
+        <a href="#" class="logo">
+            <img src="./assets/Images/logo.png" alt="Weatheria">
+        </a>
+
+        <div class="search-view">
+
+
+            <div class="search-wrapper">
+                <input type="search" class="search-field" placeholder="search City Here..." name="search" aria-label="search">
+                <span class="material-icon">search</span>
+
+                <button class="mat-icon-btn has-state">
+                    <span class="material-icon">arrow_back</span> <!-- for smaller divice when search screen is toggled on -->
+                </button>
+            </div>
+
+
+            <div class="search-results active"> <!-- To display search results based on the text typed -->
+
+                <ul class="results-view">
+
+                    <li class="result-items">
+                        <span class="material-icon">location_on</span>
+                        <div>
+                            <p class="loc-title">London</p>
+                            <p class="label-2 subtitle-text">England, GB</p>
+                        </div>
+                    </li>
+
+                    <li class="result-items">
+                        <span class="material-icon">location_on</span>
+                        <div>
+                            <p class="loc-title">London</p>
+                            <p class="label-2 subtitle-text">England, GB</p>
+                        </div>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="header-right">
+
+            <button class="mat-icon-btn has-state">
+                <span class="material-icon">search</span>   <!--For smaller device to toggle search display-->
+            </button>
+
+            <a href="#" class="btn-primary has-state">
+                <span class="material-icon">my_location</span>
+                <span>Current Location</span>
+            </a>
+        </div>
+
+
+    </header>
+
+
+    <!--
+            Main
+    -->
+
+    <main>
+
+    </main>
+
+
+
+    <!-- 
+    Footer
+     -->
+
+    <footer>
+
+    </footer>
+
+
+    <!-- 
+    Error Section
+    -->
+
+    <div id="error-section">
+
+    </div>
+
 </body>
+
 </html>

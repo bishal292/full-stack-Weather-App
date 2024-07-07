@@ -1,3 +1,320 @@
-:root{
-    --bg-main: 
+/* ---------------------------------------------------------------
+        Material Icon
+        it can be used through importing online link also but
+        for me it help to develop properly without worrying about internet connection
+
+        Guide for using this:->
+          1. Download the symbols file and create a style tag and write below stles as same
+              where font-family include the name what you want to give to the symbol font
+              and include the file in the src along with its format 
+              in this case its format(extension) is woff2
+          2. Use the same font family for styling the icons
+          3. for symbol name or use you can refer to google fonts 
+          4. basic syntax to use this in this case:
+                <span class="material-icon">search</span>
+                Note:  It can be any class name but it should use same font-family in order to be use as icons.
+
+
+------------------------------------------------------------------ */
+@font-face {
+  font-family: "Material Symbols Rounded";
+  src: url(../Fonts/material-symbol-rounded.woff2) format("woff2");
+  font-style: normal;
+  font-weight: 400;
 }
+.material-icon {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  height: 1em;
+  /* width: 1em; */
+  overflow: hidden;
+}
+
+:root {
+  /* -------------
+        Colors
+    ---------------- */
+    --background: rgb(19, 18, 20);
+    --on-background: rgb(234, 230, 242);
+    --white: rgb(255, 255, 255);
+    --white-alpha-8: rgba(255, 255, 255, 0.08);
+    --surface: rgb(29, 28, 31);
+  --primary: rgb(181, 161, 229);
+  --on-primary: rgb(16, 14, 23);
+  --on-surface: rgb(221, 218, 229);
+  --on-surface-variant: rgb(123, 121, 128);
+  --on-surface-variant-2: rgb(185, 182, 191);
+  --outline: rgb(62, 61, 64);
+  --bg-aqi-1: rgb(137, 229, 137);
+  --on-bg-aqi-1: rgb(31, 51, 31);
+  --bg-aqi-2: rgb(229, 221, 137);
+  --on-bg-aqi-2: rgb(51, 49, 31);
+  --bg-aqi-3: rgb(229, 192, 137);
+  --on-bg-aqi-3: rgb(51, 43, 31);
+  --bg-aqi-4: rgb(229, 137, 137);
+  --on-bg-aqi-4: rgb(51, 31, 31);
+  --bg-aqi-5: rgb(229, 137, 183);
+  --on-bg-aqi-5: rgb(51, 31, 41);
+  --white-alpha-4: rgba(255, 255, 255, 0.04);
+  --black-alpha-10: rgba(0, 0, 0, 0.1);
+
+
+
+
+  /* ----------------------
+    Gradient Colors
+    ----------------------- */
+  --gradient-1: linear-gradient(
+    180deg,
+    rgba(16, 14, 18, 0) 0%,
+    rgba(16, 14, 18, 0.8) 65%,
+    rgb(16, 14, 18) 100%
+  );
+--gradient-2: linear-gradient(
+    180deg,
+    rgba(32, 30, 36, 0) 0%,
+    rgba(32, 30, 36, 0.8) 65%,
+    rgb(32, 30, 36) 100%
+  );
+
+  /* --------------------
+    Typography
+    ----------------------- */
+  --ff-nunito-sans: "Nunito Sans", sans-serif;
+
+  --body-3: 1.6rem;
+  --heading: 5.6rem;
+  --title-1: 2rem;
+  --title-2: 1.8rem;
+  --title-3: 1.6rem;
+  --body-1: 2.2rem;
+  --body-2: 2rem;
+  --label-1: 1.4rem;
+  --label-2: 1.2rem;
+
+  --weight-regular: 400;
+  --weight-semiBold: 600;
+  /* --------------------
+    Shadow
+    ----------------------- */
+  --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
+  /* --------------------
+    Border
+    ----------------------- */
+    --radius-pill: 500px;
+    --radius-28: 28px;
+  --radius-16: 16px;
+  --radius-circle: 50%;
+  /* --------------------
+    Transition
+    ----------------------- */
+  --transition-short:all 100ms ease;
+}
+
+/* ------------------------------------------
+        RESET
+    -----------------------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+img,
+span,
+input,
+button {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+/* added property to add text as base */
+sub {
+  vertical-align: baseline;
+}
+
+/* added property to add text as power */
+sup {
+  vertical-align: top;
+}
+
+sub,
+sup {
+  font-size: 0.75em;
+}
+
+html {
+  font-family: var(--ff-nunito-sans);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-background);
+  font-size: var(--body-3);
+  overflow-x: hidden;
+  /* height: 300vh; */
+}
+
+/* This selector is used to apply property to only the elements which is visibally focused means(like keyboard Navigation) */
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+/* It styles the selection of text */
+::selection {
+  background-color: var(--white-alpha-8);
+}
+/* styles the scrobar path */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+/* Styles scrollbar thumb(Movable-Portion) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--white-alpha-8);
+  border-radius: var(--radius-pill);
+}
+
+
+/* ----------------------------------------------------------------
+                        Reused Styles
+    ---------------------------------------------------------------- */
+.material-symbols-rounded.m-icon{
+    font-size: 2.4rem;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    height: 1em;
+    width: 1em;
+    overflow: hidden;
+}
+
+.label-2{
+  font-size: var(--label-2);
+}
+
+
+
+/* ----------------------------------------------------------------
+                        Header
+    ---------------------------------------------------------------- */
+
+header.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    padding: 40px;
+    z-index: 10;
+    height: 120px;
+}
+.search-view{
+  position: relative;
+}
+
+/* These properties will be applied to search-field if search-results is along with active class and any element within is focused */
+.search-view:has(.search-results.active):focus-within .search-field {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-block-end: 1px solid var(--outline);
+}
+.search-wrapper .search-field{
+  width: 35vw;
+  height: 56px;
+  border-radius: var(--radius-28);
+  line-height: 80px;
+  padding-inline: 56px 16px;
+  outline: none;
+}
+.search-wrapper span.material-icon{
+  position: absolute;
+  top: 30.5%;
+  left: 3.2%;
+}
+
+header .mat-icon-btn{ /* Buttons used for smaller device is not displayed previously */
+  display: none;
+}
+.search-results{
+  position: absolute;
+  width: 100%;
+}
+
+.search-field, .search-view .results-view {
+  background-color: var(--surface);
+}
+.results-view{
+  border-bottom-left-radius: var(--radius-28);
+  border-bottom-right-radius: var(--radius-28);
+  padding: 5px 18px;
+}
+
+.result-items, .header-right{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.result-items{
+  height: 55px;
+}
+.result-items:hover{
+  cursor: pointer;
+}
+.result-items .material-icon , .subtitle-text{
+  color: var(--on-surface-variant);
+}
+.btn-primary{
+ display: flex;
+ gap: 16px;
+ background-color: var(--primary);
+ color: var(--on-primary);
+ font-size: var(--body-3);
+ padding: 15px;
+ border-radius: var(--radius-pill);
+}
+

@@ -347,6 +347,10 @@ article.container{
 /* -----------------------------------------------------------------------------------------
                           Current Weather
 -------------------------------------------------------------------------------------------- */
+.left-container{
+  position: sticky;
+  top: 0;
+}
 .left-container , .right-container {
   margin-block: 20px;
 }
@@ -498,3 +502,122 @@ div.card.current-weather-card{
   margin-block-end: 12px;
 }
 
+/* -----------------------------------------------------------------------------------------
+                          Hourly Forecast
+-------------------------------------------------------------------------------------------- */
+
+
+.slider-container {
+  overflow: auto;
+  margin-inline: 0 -24px;
+  border-bottom-left-radius: var(--radius-16);
+  border-top-left-radius: var(--radius-16);
+}
+
+.slider-list {
+  display: flex;
+  gap: 16px;
+}
+
+.slider-list:first-child {
+  margin-block-end: 16px;
+}
+
+.slider-item {
+  min-width: 110px;
+  flex: 1 1 100%;
+}
+.hourly-forecast .card-sm {
+  padding: 16px;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  border-radius: var(--radius-16);
+}
+.slider-card {
+  text-align: center;
+}
+.slider-item .weather-icon {
+  width: 64px;
+  margin-inline: auto;
+  margin-block: 12px;
+}
+
+/* -----------------------------------------------------------------------------------------
+                          Footer
+-------------------------------------------------------------------------------------------- */
+
+
+
+footer,
+footer .body-3:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+footer {
+  background: var(--white-alpha-8);
+  color: var(--on-surface-variant);
+  text-align: center;
+  gap: 12px 24px;
+  padding: 20px;
+}
+.openw-img a{margin-left: 14px;}
+
+
+/* -----------------------------------------------------------------------------------------
+                          Error Screen
+-------------------------------------------------------------------------------------------- */
+
+
+#error-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+  display: none;
+}
+#error-content .btn-primary {
+  margin-block-start: 20px;
+}
+
+/* -----------------------------------------------------------------------------------------
+                          Loading Screen
+-------------------------------------------------------------------------------------------- */
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  display: none;
+}
+.loading::before {
+  content: "";
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--on-background);
+  border-block-start-color: transparent;
+  border-radius: var(--radius-circle);
+  animation: loading 500ms linear infinite;
+}
+@keyframes loading {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

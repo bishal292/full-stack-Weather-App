@@ -1,6 +1,9 @@
 // These api are powered by OpenWeather which provide some api for free to use 
 const websiteLink ="https://openweathermap.org/";
 console.log(`This website is Powered by ${websiteLink}`);
+// Images/Weather-Icons for the weather conditions are taken from the website of OpenWeatherMap.
+const imgDownloadLink = "https://openweathermap.org/weather-conditions#Icon-list";
+console.log(`The weather Icons for the Project is taken from the site: ${imgDownloadLink}`);
 
 
 

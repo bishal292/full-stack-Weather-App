@@ -49,16 +49,19 @@
 
 
             <div class="search-wrapper">
-                <input type="search" class="search-field" placeholder="search City Here..." name="search" aria-label="search">
+                <input type="search" class="search-field" placeholder="search City Here..." name="search"
+                    aria-label="search">
                 <span class="material-icon">search</span>
 
                 <button class="mat-icon-btn has-state">
-                    <span class="material-icon">arrow_back</span> <!-- for smaller divice when search screen is toggled on -->
+                    <span class="material-icon">arrow_back</span>
+                    <!-- for smaller divice when search screen is toggled on -->
                 </button>
             </div>
 
 
-            <div class="search-results active"> <!-- To display search results based on the text typed -->
+            <div class="search-results none">
+                <!-- To display search results based on the text typed when active class is added-->
 
                 <ul class="results-view">
 
@@ -77,7 +80,7 @@
                             <p class="label-2 subtitle-text">England, GB</p>
                         </div>
                     </li>
-                    
+
                 </ul>
 
             </div>
@@ -87,7 +90,7 @@
         <div class="header-right">
 
             <button class="mat-icon-btn has-state">
-                <span class="material-icon">search</span>   <!--For smaller device to toggle search display-->
+                <span class="material-icon">search</span> <!--For smaller device to toggle search display-->
             </button>
 
             <a href="#" class="btn-primary has-state">
@@ -105,7 +108,116 @@
     -->
 
     <main>
+        <article class="container">
 
+ <!-- ---------------------------------------------------------
+                        Current-Weather Section
+-------------------------------------------------------------- -->
+
+            <section class="left-container">
+
+                <div class="card current-weather-card">
+                    <h2 class="title-2">Now</h2>
+
+                    <div class="weather-wrapper">
+                        <p class="heading">25&deg;</p>
+                        <img class="weather-icon" src="./assets/Images/Icons/01d.png" alt="Weather Icon">
+                    </div>
+
+                    <p class="body-3">OverCastClouds</p>
+
+                    <ul class="data-list">
+                        <li class="data-item">
+                            <span class="material-icon">calendar_today</span>
+                            <p class="title-3 data-text">Sunday 30, June</p>
+                        </li>
+
+                        <li class="data-item">
+                            <span class="material-icon">location_on</span>
+                            <p class="title-3 data-text">Waghodia, Gujrat</p>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+
+<!-- ---------------------------------------------------------
+                        5 -days Weather-Forecast Section
+-------------------------------------------------------------- -->
+                <div class="title-2">5 Days Forecast
+                </div>
+
+                <div class="card forecast-card">
+
+                    <ul class="forecast-data-list">
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+                        
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <section class="right-container">
+
+                Hello I am right section
+            </section>
+
+
+
+
+ <!-- ---------------------------------------------------------
+                        For Loading Screen 
+-------------------------------------------------------------- -->
+
+
+        </article>
     </main>
 
 

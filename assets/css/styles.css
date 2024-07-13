@@ -69,7 +69,7 @@
   --on-bg-aqi-5: rgb(51, 31, 41);
   --white-alpha-4: rgba(255, 255, 255, 0.04);
   --black-alpha-10: rgba(0, 0, 0, 0.1);
-
+  --main-page-icon-color: rgb(90 186 90);
 
 
 
@@ -238,7 +238,7 @@ body {
   font-size: var(--label-2);
 }
 .none{
-  display: none;
+  display: none !important;
 }
 .title-1{
   font-size: var(--title-1);
@@ -254,6 +254,38 @@ body {
 }
 sub, sup {
   font-size: 0.75em;
+}
+.has-state {
+  position: relative;
+}
+.has-state:hover {
+  box-shadow: var(--shadow-1);
+}
+.has-state :is(:focus, :focus-visible) {
+  box-shadow: none;
+}
+.has-state::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  clip-path: circle(100% at 50% 50%);
+  transition: var(--transition-short);
+}
+.has-state:hover::before {
+  background-color: var(--white-alpha-4);
+}
+.has-state :is(:focus, :focus-visible)::before {
+  background-color: var(--white-alpha-8);
+  animation: ripple 250ms ease forwards;
+}
+@keyframes ripple {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+  }
 }
 /* ----------------------------------------------------------------
                         Header
@@ -388,6 +420,9 @@ article.container{
   align-items: center;
   gap: 8px;
 }
+.data-list .data-item .material-icon{
+  color: var(--main-page-icon-color);
+}
 .data-text{
   color: var(--on-surface-variant);
 }
@@ -431,7 +466,10 @@ div.card.current-weather-card{
     color: var(--on-surface-variant);
     margin-block-end: 20px;
 }
-.highlight-list .material-icon{font-size: 4.8rem;}
+.highlight-list .material-icon{
+  font-size: 3.8rem;
+  color: var(--main-page-icon-color);
+}
 
 .highlight-card :is(.highlight-wrapper, .card-list, .card-item) {
   display: flex;
@@ -495,7 +533,7 @@ div.card.current-weather-card{
 .highlight-card.two .card-list .card-item{
   display: flex;
   align-items: center;
-  column-gap: 24px;
+  column-gap: 8px;
   justify-content: space-between;
 }
 .today-highlights-section{
@@ -524,7 +562,7 @@ div.card.current-weather-card{
 }
 
 .slider-item {
-  min-width: 110px;
+  min-width: 134px;
   flex: 1 1 100%;
 }
 .hourly-forecast .card-sm {
@@ -621,3 +659,162 @@ footer {
     transform: translateY(-50%) rotate(360deg);
   }
 }
+
+
+/* -----------------------------------------------------------------------------------------
+                          Media -Queries
+-------------------------------------------------------------------------------------------- */
+/* for screen lesser than 1450 */
+@media screen and (max-width:1450px) {
+  .highlight-card.two .card-list .card-item{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .highlight-card.one .title-1{
+    --title-1:2.8rem;
+  }
+  /* 1380 */
+}
+
+@media screen and (max-width: 1380px) {
+  .highlight-list{
+    grid-template-columns: 1fr 1fr;
+  }
+  .highlight-card.one .title-1, :root{
+    --title-1:3.8rem;
+  }
+  .highlight-card.two .card-list .card-item{
+    flex-direction: row;
+    align-items: center;
+    column-gap: 25px;
+  }
+  .highlight-list .material-icon {
+    font-size: 4.8rem;
+  }
+}
+@media screen and (max-width: 1140px){
+  .highlight-card.two .card-list .card-item{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card{
+    padding: 24px;
+  }
+  article.container {
+    padding-block-start: 0;
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .highlight-list .card {
+    padding: 15px;
+  }
+}
+@media screen and (max-width: 1075px){
+  :root{
+    --title-1:2.2rem;
+  }
+  .highlight-list .material-icon {
+    font-size: 3.8rem;
+  }
+  .highlight-card.one .title-1, :root{
+    --title-1:2.8rem;
+  }
+  header.container{
+    height: 100px;
+  }
+  .header-right .btn-primary span:last-child{
+    display: none;
+  }
+  .search-wrapper .search-field{
+    width: 45vw;
+  }
+}
+@media screen and (max-width: 775px){
+  article.container{
+    grid-template-columns: minmax(0, 1fr);
+    position: relative;
+  }
+  .left-container{
+    position: relative;
+  }
+  .weather-wrapper .weather-icon{
+    margin-inline: auto;
+  }
+
+  .header-right .mat-icon-btn{
+    display: block;
+    position: relative;
+  }
+  .header-right .mat-icon-btn .material-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    background-color: var(--white-alpha-8);
+    border-radius: var(--radius-circle);
+  }
+  .search-view{
+    display: none;
+  }
+/* Selects all .header-right elements which are siblings of elements with both active and search-view class */
+  .search-view.active ~ .header-right {
+      display: none;
+  }
+  /* ----------------------------------------------------------------------- */
+  /* To be toggled by javaScript when clicked on search toggler button in smaller screen*/
+
+  /* #logo-image{display: none;}  */
+  /* ----------------------------------------------------------------------- */
+
+  .search-view.active{
+    display: block;
+  }
+  header.container:has(.search-view.active){
+    padding: 0;
+    height: auto;
+  }
+  .search-view.active .search-field{
+    border-radius: 0;
+    position: relative;
+    top: 0;
+    width: 100vw;
+  }
+  .search-view.active .search-wrapper > span{
+    display: none;
+  }
+  .search-view.active .search-wrapper .has-state{
+    display: block;
+    position: absolute;
+    top: 29%;
+    left: 2%;
+  }
+  body:has(.search-view.active){
+    overflow: hidden;
+  }
+  .search-view.active .results-view{
+    height: calc(100vw - 57px);
+  }
+
+}
+@media screen and (max-width: 470px) {
+  header.container{
+    padding: 12px 0px 12px 12px;
+  }
+  article.container{
+    padding: 0 12px 12px 14px;
+  }
+  .highlight-card.one .title-1, :root {
+    --title-1: 1.8rem;
+  }
+  .highlight-list .material-icon {
+    font-size: 3.3rem;
+}
+}
+
+
+
+
+/* there is case to apply property to an sibling elements with class (logo & header-right) of an element with class search-view & active when */

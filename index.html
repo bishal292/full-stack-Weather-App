@@ -45,25 +45,25 @@
             <img src="./assets/Images/logo.png" alt="Weatheria">
         </a>
 
-        <div class="search-view">
+        <div class="search-view" data-search-view="">
 
 
             <div class="search-wrapper">
-                <input type="search" class="search-field" placeholder="search City Here..." name="search"
+                <input type="search" class="search-field" placeholder="Search City Here..." name="search"
                     aria-label="search">
                 <span class="material-icon">search</span>
 
-                <button class="mat-icon-btn has-state">
+                <button class="mat-icon-btn has-state"> <!--Line 788-->
                     <span class="material-icon">arrow_back</span>
                     <!-- for smaller divice when search screen is toggled on -->
                 </button>
             </div>
 
 
-            <div class="search-results none">
+            <div class="search-results none" >
                 <!-- To display search results based on the text typed when active class is added-->
 
-                <ul class="results-view">
+                <ul class="results-view ">
 
                     <li class="result-items">
                         <span class="material-icon">location_on</span>
@@ -71,6 +71,7 @@
                             <p class="loc-title">London</p>
                             <p class="label-2 subtitle-text">England, GB</p>
                         </div>
+                        <a href="#" class="item-link has-state" data-search-toggler></a>
                     </li>
 
                     <li class="result-items">
@@ -79,6 +80,7 @@
                             <p class="loc-title">London</p>
                             <p class="label-2 subtitle-text">England, GB</p>
                         </div>
+                        <a href="#" class="item-link has-state" data-search-toggler></a>
                     </li>
 
                 </ul>
@@ -89,11 +91,11 @@
 
         <div class="header-right">
 
-            <button class="mat-icon-btn has-state">
+            <button class="mat-icon-btn has-state open-search">
                 <span class="material-icon">search</span> <!--For smaller device to toggle search display-->
             </button>
 
-            <a href="#" class="btn-primary has-state">
+            <a href="#" class="btn-primary has-state" data-search-toggler>
                 <span class="material-icon">my_location</span>
                 <span>Current Location</span>
             </a>
@@ -532,5 +534,5 @@
     </section>
 
 </body>
-
+<script src="./assets/Js/script.js"></script>
 </html>

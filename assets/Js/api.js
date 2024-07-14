@@ -5,6 +5,9 @@ console.log(`This website is Powered by ${websiteLink}`);
 const imgDownloadLink = "https://openweathermap.org/weather-conditions#Icon-list";
 console.log(`The weather Icons for the Project is taken from the site: ${imgDownloadLink}`);
 
+require('dotenv').config();
+const aPI_Key = process.env.api_Key;
+console.log(`api key is : ${aPI_Key}`);
 
 
 const currentWeatherApi = "https://api.openweathermap.org/data/2.5/weather?lat=51.5073219&lon=-0.1276474&appid=<API_KEY_HERE>";
@@ -26,3 +29,28 @@ const reverseGeoApi ="https://api.openweathermap.org/geo/1.0/reverse?lat=51.5073
 const geoApi ="https://api.openweathermap.org/geo/1.0/direct?q=london&appid=<API_KEY_HERE>"
 
 // This above Api will give the location details data like{Name, Country , State, Local_names} for the given place name if it is recognized globally.
+
+export const fetchData= (requestedURL , callback)=>{
+    var a = `${requestedURL}&appid=${aPI_Key}`
+    fetch(a)
+    .then(res => res.json())
+    .then(data => callback(data));
+}
+
+export const url ={
+    currentWeather(lat,lon){
+        return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}`;
+    },
+    forecast(lat,lon){
+        return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}`;
+    },
+    airpollution(lat,lon){
+        return `https://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}`;
+    },
+    reverseGeo(lat,lon){
+        return `https://api.openweathermap.org/geo/1.0/reverse?${lat}&${lon}&limit=5`;
+    },
+    geo(query){
+        return `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`;
+    }
+}

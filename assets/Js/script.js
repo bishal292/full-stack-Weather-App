@@ -13,13 +13,12 @@ const searchField = document.querySelector(".search-field");
 const resultsView = document.querySelector(".results-view");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-const header = document.querySelector("header");
 
 
 const currentWeatherCard = document.querySelector("[data-current-weeather-card]");
 const forecastList5Days = document.querySelector("[data-forecast-data-list]");
 const todayHighlightList = document.querySelector("[data-today-highlights]");
-const loading = document.querySelector(".loading");
+const loadingView = document.querySelector(".loading");
 
 function addEventOnElements(elements , eventType , Callback){
     elements.forEach(e => {
@@ -321,10 +320,11 @@ searchField.addEventListener("input",()=>{
 
 function updateWeatherScreen(lat , lon){
     // Make loading screen visible
-    loading.classList.toggle("none");
+    loadingView.classList.toggle("none");
     footer.classList.toggle("none");
-    loading.style.top = header.offsetHeight;
-    loading.style.height = `${screen.innerHeight - header.offsetHeight}px`;
+    document.body.style.overflowY = "hidden";
+    loadingView.style.top = `${document.querySelector("header").offsetHeight}px`;
+    loadingView.style.height = `${window.innerHeight - document.querySelector("header").offsetHeight}px`;
 
     // clearing all the inner htmls of the documents which are going to be inserted dynamically.
     currentWeatherCard.innerHTML ="";
@@ -379,8 +379,9 @@ function updateWeatherScreen(lat , lon){
                 city:{sunrise,sunset}
             } =forecastApiResponse;
 
-            loading.classList.toggle("none");
+            loadingView.classList.toggle("none");
             footer.classList.toggle("none");
+            document.body.style.overflowY = "hidden";
         });
     });
 

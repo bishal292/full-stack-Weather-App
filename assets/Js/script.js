@@ -5,14 +5,14 @@ import * as module from './module.js';
             Initial Variables
     ------------------------------------------------------------
 */
-const openSearchBtn = document.querySelector(".open-search");
 const logoImage = document.querySelector(".logo");
 const searchAndCloseView  = Array.from(document.querySelectorAll(".mat-icon-btn"));
 const searchResults = document.querySelector(".search-results");
 const searchView = document.querySelector("[data-search-view]");
 const searchField = document.querySelector(".search-field");
 const resultsView = document.querySelector(".results-view");
-
+const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 
 
 function addEventOnElements(elements , eventType , Callback){
@@ -31,8 +31,8 @@ const searchScreenToggler = ()=>{
     searchView.classList.toggle("active");
     searchResults.classList.toggle("none");
     searchResults.classList.toggle("active");//_-------------------------------->
-    document.querySelector("main").classList.toggle("none");
-    document.querySelector("footer").classList.toggle("none");
+    main.classList.toggle("none");
+    footer.classList.toggle("none");
 }
 
 addEventOnElements(searchAndCloseView , "click" ,searchScreenToggler);
@@ -43,14 +43,23 @@ addEventOnElements(searchAndCloseView , "click" ,searchScreenToggler);
     ------------------------------------------------------------
 */
 // Applied click event listner on whole documents
-searchField.addEventListener("click",()=>{
-    if(!searchResults.classList.contains("active")){
-        searchResults.classList.toggle("active");
+document.addEventListener("click",(event)=>{
+    if(searchField.contains(event.target)){//It checks whether the click element is searchField
+        if(!searchResults.classList.contains("active")){
+            searchResults.classList.toggle("active");
+        }
+        if (searchResults.classList.contains("none")) {
+            searchResults.classList.toggle("none");
+        }
+        console.log(`clicked on search field`);
+    }else{
+        if(searchResults.classList.contains("active")){
+            searchResults.classList.toggle("active");
+        }
+        if (!searchResults.classList.contains("none")) {
+            searchResults.classList.toggle("none");
+        }
     }
-    if (searchResults.classList.contains("none")) {
-        searchResults.classList.toggle("none");
-    }
-    console.log(`clicked on search field`);
 });
 
 
@@ -105,15 +114,31 @@ searchField.addEventListener("input",()=>{
 
                 items.forEach(item =>{
                     item.addEventListener("click",()=>{
-                        searchResults.classList.toggle("none");
+                        searchResults.classList.remove("none");
+                        searchResults.classList.remove("active");
                         searchField.value = null;
+                        resultsView.innerHTML="";
+                        searchView.classList.remove("active");
+                        if (main.classList.contains("none")) {
+                            main.classList.remove("none");
+                            footer.classList.remove("none");  
+                            logoImage.classList.remove("none");                      
+                        }
+
                         var selectedLocation = (item.querySelector("[data-search-toggler]")).toString();
                         const {lat,lon} = getLatLon(selectedLocation);
                         console.log(`lat : ${lat}  And lon : ${lon}`);
-
+                        updateWeatherScreen(lat , lon);
                     })
                 });
             });
         }, searchTimeoutDuration);
+    }else{
+        resultsView.innerHTML="";
     }
 });
+
+
+function updateWeatherScreen(lat , lon){
+    
+}

@@ -102,28 +102,8 @@
                         Current-Weather Section
 -------------------------------------------------------------- -->
 
-                <div class="card current-weather-card">
-                    <h2 class="title-2">Now</h2>
-
-                    <div class="weather-wrapper">
-                        <p class="heading">25&deg;</p>
-                        <img class="weather-icon" src="./assets/Images/Icons/01d.png" alt="Weather Icon">
-                    </div>
-
-                    <p class="body-3">OverCastClouds</p>
-
-                    <ul class="data-list">
-                        <li class="data-item">
-                            <span class="material-icon">calendar_today</span>
-                            <p class="title-3 data-text">Sunday 30, June</p>
-                        </li>
-
-                        <li class="data-item">
-                            <span class="material-icon">location_on</span>
-                            <p class="title-3 data-text">Waghodia, Gujrat</p>
-                        </li>
-                    </ul>
-
+                <div class="card current-weather-card" data-current-weeather-card="">
+                    
                 </div>
 
 
@@ -136,52 +116,8 @@
 
                 <div class="card forecast-card">
 
-                    <ul class="forecast-data-list">
+                    <ul class="forecast-data-list" data-forecast-data-list="">
 
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
 
                     </ul>
 
@@ -200,103 +136,7 @@
 
                     <div class="card">
                         <h2 class="title-2" id="highlights-label">Today's highlights</h2>
-                        <div class="highlight-list">
-
-
-                            <div class="card highlight-card one">
-                                <h3 class="title-3">Air Quality Index</h3>
-
-                                <div class="highlight-wrapper">
-
-                                    <span class="material-icon">air</span><!--255-->
-                                    <ul class="card-list">
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <span class="badge aqi-1 label-1" title="aqi message">Good</span>
-                            </div>
-
-                            <div class="card highlight-card two">
-                                <h3 class="title-3">Sunrise & Sunset</h3>
-                                <div class="card-list">
-                                    
-                                    <div class="card-item">
-                                        <span class="material-icon">clear_day</span>
-                                        <div>
-                                            <p class="label-1">Sunrise</p>
-                                            <p class="title-1">6:30 AM</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-item">
-                                        <span class="material-icon">clear_night</span>
-                                        <div>
-                                            <p class="label-1">Sunset</p>
-                                            <p class="title-1">5:54 PM</p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div class="card highlight-card">
-                                <h3 class="title-3">Humidity</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">humidity_percentage</span>
-                                    <p class="title-1">35<sub>%</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Pressure</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">airwave</span>
-                                    <p class="title-1">105<sub>hPa</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Visibility</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">visibility</span>
-                                    <p class="title-1">10<sub>KM</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Feels Like</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">thermostat</span>
-                                    <p class="title-1">25&deg;<sup>C</sup></p>
-                                </div>
-                            </div>
+                        <div class="highlight-list" data-today-highlights="">
 
                         </div>
                     </div>
@@ -479,7 +319,7 @@
                         For Loading Screen 
 -------------------------------------------------------------- -->
 
-<div class="loading"></div>
+<div class="loading none"></div>
 
         </article>
     </main>

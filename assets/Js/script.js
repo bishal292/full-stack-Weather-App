@@ -13,7 +13,13 @@ const searchField = document.querySelector(".search-field");
 const resultsView = document.querySelector(".results-view");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
+const header = document.querySelector("header");
 
+
+const currentWeatherCard = document.querySelector("[data-current-weeather-card]");
+const forecastList5Days = document.querySelector("[data-forecast-data-list]");
+const todayHighlightList = document.querySelector("[data-today-highlights]");
+const loading = document.querySelector(".loading");
 
 function addEventOnElements(elements , eventType , Callback){
     elements.forEach(e => {
@@ -64,7 +70,7 @@ document.addEventListener("click",(event)=>{
 
 
 
-// Function to get the query params(lat & lon) from given url
+// Function to get the query parameters -> (lat & lon) from given url
 /**
  * Creates a user object.
  * @param {string} url - The url with parameter containing lat & lon.
@@ -129,6 +135,8 @@ searchField.addEventListener("input",()=>{
                         const {lat,lon} = getLatLon(selectedLocation);
                         console.log(`lat : ${lat}  And lon : ${lon}`);
                         updateWeatherScreen(lat , lon);
+                        // loading.classList.toggle("none");
+                        // footer.classList.toggle("none");
                     })
                 });
             });
@@ -138,7 +146,244 @@ searchField.addEventListener("input",()=>{
     }
 });
 
+// Current Weather Card.
+/* 
+{
+    <h2 class="title-2">Now</h2>
+
+    <div class="weather-wrapper">
+        <p class="heading">25&deg;</p>
+        <img class="weather-icon" src="./assets/Images/Icons/01d.png" alt="Weather Icon">
+    </div>
+
+    <p class="body-3">OverCastClouds</p>
+
+    <ul class="data-list">
+        <li class="data-item">
+            <span class="material-icon">calendar_today</span>
+            <p class="title-3 data-text">Sunday 30, June</p>
+        </li>
+
+        <li class="data-item">
+            <span class="material-icon">location_on</span>
+            <p class="title-3 data-text">Waghodia, Gujrat</p>
+        </li>
+    </ul>
+}*/
+
+// 5-day forecast list
+/*
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+
+                        <li class="forecast-data-item">
+                            <div class="icon-wrapper">
+                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
+                                <p class="title-2">25</p>
+                            </div>
+                            <p class="label-1 data-text">31 June</p>
+                            <p class="label-1 data-text">Monday</p>
+                        </li>
+*/
+
+// Today's Highlight-section Html 
+/*
+                            <div class="card highlight-card one">
+                                <h3 class="title-3">Air Quality Index</h3>
+
+                                <div class="highlight-wrapper">
+
+                                    <span class="material-icon">air</span><!--255-->
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <p class="title-1">23.3</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">23.3</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">23.3</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">23.3</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <span class="badge aqi-1 label-1" title="aqi message">Good</span>
+                            </div>
+
+                            <div class="card highlight-card two">
+                                <h3 class="title-3">Sunrise & Sunset</h3>
+                                <div class="card-list">
+                                    
+                                    <div class="card-item">
+                                        <span class="material-icon">clear_day</span>
+                                        <div>
+                                            <p class="label-1">Sunrise</p>
+                                            <p class="title-1">6:30 AM</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-item">
+                                        <span class="material-icon">clear_night</span>
+                                        <div>
+                                            <p class="label-1">Sunset</p>
+                                            <p class="title-1">5:54 PM</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="card highlight-card">
+                                <h3 class="title-3">Humidity</h3>
+
+                                <div class="highlight-wrapper">
+                                    <span class="material-icon">humidity_percentage</span>
+                                    <p class="title-1">35<sub>%</sub></p>
+                                </div>
+                            </div>
+
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Pressure</h3>
+
+                                <div class="highlight-wrapper">
+                                    <span class="material-icon">airwave</span>
+                                    <p class="title-1">105<sub>hPa</sub></p>
+                                </div>
+                            </div>
+
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Visibility</h3>
+
+                                <div class="highlight-wrapper">
+                                    <span class="material-icon">visibility</span>
+                                    <p class="title-1">10<sub>KM</sub></p>
+                                </div>
+                            </div>
+
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Feels Like</h3>
+
+                                <div class="highlight-wrapper">
+                                    <span class="material-icon">thermostat</span>
+                                    <p class="title-1">25&deg;<sup>C</sup></p>
+                                </div>
+                            </div>
+
+*/
+
 
 function updateWeatherScreen(lat , lon){
+    // Make loading screen visible
+    loading.classList.toggle("none");
+    footer.classList.toggle("none");
+    loading.style.top = header.offsetHeight;
+    loading.style.height = `${screen.innerHeight - header.offsetHeight}px`;
+
+    // clearing all the inner htmls of the documents which are going to be inserted dynamically.
+    currentWeatherCard.innerHTML ="";
+    forecastList5Days.innerHTML ="";
+    todayHighlightList.innerHTML ="";
+    fetchData(url.currentWeather(lat , lon), (apiResponseData)=>{
+        const {
+            weather:[{description,icon}],
+            main:{temp ,feels_like,pressure,humidity},
+            visibility,
+            dt: dateUnix,
+            sys:{ sunrise , sunset},
+            timezone,
+        } = apiResponseData;
+
+        fetchData(url.reverseGeo(lat , lon),([{ name , country}])=>{
+            currentWeatherCard.innerHTML =`
+            <h2 class="title-2">Now</h2>
+
+            <div class="weather-wrapper">
+                <p class="heading">${parseInt(module.kelvinToCelsius(temp))}&deg;C</p>
+                <img class="weather-icon" src="./assets/Images/Icons/${icon}.png" alt="Weather Icon">
+            </div>
+
+            <p class="body-3">${description}</p>
+
+            <ul class="data-list">
+                <li class="data-item">
+                    <span class="material-icon">calendar_today</span>
+                    <p class="title-3 data-text">${module.getDate(dateUnix ,timezone)}</p>
+                </li>
+
+                <li class="data-item">
+                    <span class="material-icon">location_on</span>
+                    <p class="title-3 data-text">${name}, ${country}</p>
+                </li>
+            </ul>
+        `;
+
+        });
+        fetchData(url.airpollution(lat , lon),(airpollution)=>{
+            const {
+                list:[{
+                    main:{aqi},
+                    components:{no2 , o3 , so2 ,pm1_5}
+                }]
+            }=airpollution;
+        });
+        fetchData(url.forecast(lat ,lon),(forecastApiResponse)=>{
+            const {
+                list: forecastList,
+                city:{sunrise,sunset}
+            } =forecastApiResponse;
+
+            loading.classList.toggle("none");
+            footer.classList.toggle("none");
+        });
+    });
+
     
+
 }

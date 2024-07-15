@@ -76,8 +76,8 @@ const aqiText ={
      }
 };
 
-function kelvinToCelsius(fahrenheit) {
-    return fahrenheit - 273.15 ;
+function kelvinToCelsius(kelvin) {
+    return parseInt(kelvin - 273.15) ;
 }
 
-export {getDate ,getTime ,getHours, MpSec_to_KMpH , aqiText , kelvinToCelsius};
+export {weekDaysNames, monthNames ,getDate ,getTime ,getHours, MpSec_to_KMpH , aqiText , kelvinToCelsius};

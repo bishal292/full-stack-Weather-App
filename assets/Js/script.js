@@ -19,6 +19,8 @@ const currentWeatherCard = document.querySelector("[data-current-weeather-card]"
 const forecastList5Days = document.querySelector("[data-forecast-data-list]");
 const todayHighlightList = document.querySelector("[data-today-highlights]");
 const loadingView = document.querySelector(".loading");
+const tempDataSlider = document.querySelector("[data-temperature]");
+const windDataSlider = document.querySelector("[data-wind]");
 
 function addEventOnElements(elements , eventType , Callback){
     elements.forEach(e => {
@@ -145,178 +147,6 @@ searchField.addEventListener("input",()=>{
     }
 });
 
-// Current Weather Card.
-/* 
-{
-    <h2 class="title-2">Now</h2>
-
-    <div class="weather-wrapper">
-        <p class="heading">25&deg;</p>
-        <img class="weather-icon" src="./assets/Images/Icons/01d.png" alt="Weather Icon">
-    </div>
-
-    <p class="body-3">OverCastClouds</p>
-
-    <ul class="data-list">
-        <li class="data-item">
-            <span class="material-icon">calendar_today</span>
-            <p class="title-3 data-text">Sunday 30, June</p>
-        </li>
-
-        <li class="data-item">
-            <span class="material-icon">location_on</span>
-            <p class="title-3 data-text">Waghodia, Gujrat</p>
-        </li>
-    </ul>
-}*/
-
-// 5-day forecast list
-/*
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-
-                        <li class="forecast-data-item">
-                            <div class="icon-wrapper">
-                                <img src="./assets/Images/Icons/01n.png" width="60" alt="Overcast Clouds">
-                                <p class="title-2">25</p>
-                            </div>
-                            <p class="label-1 data-text">31 June</p>
-                            <p class="label-1 data-text">Monday</p>
-                        </li>
-*/
-
-// Today's Highlight-section Html 
-/*
-                            <div class="card highlight-card one">
-                                <h3 class="title-3">Air Quality Index</h3>
-
-                                <div class="highlight-wrapper">
-
-                                    <span class="material-icon">air</span><!--255-->
-                                    <ul class="card-list">
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                        <li class="card-item">
-                                            <p class="title-1">23.3</p>
-                                            <p class="label-1">PM<sub>2.5</sub></p>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <span class="badge aqi-1 label-1" title="aqi message">Good</span>
-                            </div>
-
-                            <div class="card highlight-card two">
-                                <h3 class="title-3">Sunrise & Sunset</h3>
-                                <div class="card-list">
-                                    
-                                    <div class="card-item">
-                                        <span class="material-icon">clear_day</span>
-                                        <div>
-                                            <p class="label-1">Sunrise</p>
-                                            <p class="title-1">6:30 AM</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-item">
-                                        <span class="material-icon">clear_night</span>
-                                        <div>
-                                            <p class="label-1">Sunset</p>
-                                            <p class="title-1">5:54 PM</p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                            <div class="card highlight-card">
-                                <h3 class="title-3">Humidity</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">humidity_percentage</span>
-                                    <p class="title-1">35<sub>%</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Pressure</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">airwave</span>
-                                    <p class="title-1">105<sub>hPa</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Visibility</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">visibility</span>
-                                    <p class="title-1">10<sub>KM</sub></p>
-                                </div>
-                            </div>
-
-                            <div class="card card-sm highlight-card">
-                                <h3 class="title-3">Feels Like</h3>
-
-                                <div class="highlight-wrapper">
-                                    <span class="material-icon">thermostat</span>
-                                    <p class="title-1">25&deg;<sup>C</sup></p>
-                                </div>
-                            </div>
-
-*/
-
 
 function updateWeatherScreen(lat , lon){
     // Make loading screen visible
@@ -330,6 +160,7 @@ function updateWeatherScreen(lat , lon){
     currentWeatherCard.innerHTML ="";
     forecastList5Days.innerHTML ="";
     todayHighlightList.innerHTML ="";
+
     fetchData(url.currentWeather(lat , lon), (apiResponseData)=>{
         const {
             weather:[{description,icon}],
@@ -341,11 +172,12 @@ function updateWeatherScreen(lat , lon){
         } = apiResponseData;
 
         fetchData(url.reverseGeo(lat , lon),([{ name , country}])=>{
+//      Updating Current Weather list
             currentWeatherCard.innerHTML =`
             <h2 class="title-2">Now</h2>
 
             <div class="weather-wrapper">
-                <p class="heading">${parseInt(module.kelvinToCelsius(temp))}&deg;C</p>
+                <p class="heading">${module.kelvinToCelsius(temp)}&deg;C</p>
                 <img class="weather-icon" src="./assets/Images/Icons/${icon}.png" alt="Weather Icon">
             </div>
 
@@ -369,20 +201,176 @@ function updateWeatherScreen(lat , lon){
             const {
                 list:[{
                     main:{aqi},
-                    components:{no2 , o3 , so2 ,pm1_5}
+                    components:{no2 , o3 , so2 ,pm2_5}
                 }]
             }=airpollution;
+//      updating Today's Highlight list
+            todayHighlightList.innerHTML=`
+                    <div class="card highlight-card one">
+                    <h3 class="title-3">Air Quality Index</h3>
+
+                    <div class="highlight-wrapper">
+
+                        <span class="material-icon">air</span><!--255-->
+                        <ul class="card-list">
+
+                            <li class="card-item">
+                                <p class="title-1">${no2}</p>
+                                <p class="label-1">NO<sub>2</sub></p>
+                            </li>
+
+                            <li class="card-item">
+                                <p class="title-1">${o3}</p>
+                                <p class="label-1">O<sub>3</sub></p>
+                            </li>
+
+                            <li class="card-item">
+                                <p class="title-1">${so2}</p>
+                                <p class="label-1">SO<sub>2</sub></p>
+                            </li>
+
+                            <li class="card-item">
+                                <p class="title-1">${pm2_5}</p>
+                                <p class="label-1">PM<sub>2.5</sub></p>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <span class="badge aqi-${aqi} label-1" title="${module.aqiText[aqi].message}">${module.aqiText[aqi].level}</span>
+                </div>
+
+                <div class="card highlight-card two">
+                    <h3 class="title-3">Sunrise & Sunset</h3>
+                    <div class="card-list">
+                        
+                        <div class="card-item">
+                            <span class="material-icon">clear_day</span>
+                            <div>
+                                <p class="label-1">Sunrise</p>
+                                <p class="title-1">${module.getTime(sunrise , timezone)}</p>
+                            </div>
+                        </div>
+
+                        <div class="card-item">
+                            <span class="material-icon">clear_night</span>
+                            <div>
+                                <p class="label-1">Sunset</p>
+                                <p class="title-1">${module.getTime(sunset , timezone)}</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="card highlight-card">
+                    <h3 class="title-3">Humidity</h3>
+
+                    <div class="highlight-wrapper">
+                        <span class="material-icon">humidity_percentage</span>
+                        <p class="title-1">${humidity}<sub>%</sub></p>
+                    </div>
+                </div>
+
+                <div class="card card-sm highlight-card">
+                    <h3 class="title-3">Pressure</h3>
+
+                    <div class="highlight-wrapper">
+                        <span class="material-icon">airwave</span>
+                        <p class="title-1">${pressure}<sub>hPa</sub></p>
+                    </div>
+                </div>
+
+                <div class="card card-sm highlight-card">
+                    <h3 class="title-3">Visibility</h3>
+
+                    <div class="highlight-wrapper">
+                        <span class="material-icon">visibility</span>
+                        <p class="title-1">${visibility / 1000}<sub>KM</sub></p>
+                    </div>
+                </div>
+
+                <div class="card card-sm highlight-card">
+                    <h3 class="title-3">Feels Like</h3>
+
+                    <div class="highlight-wrapper">
+                        <span class="material-icon">thermostat</span>
+                        <p class="title-1">${module.kelvinToCelsius(feels_like)}&deg;<sup>C</sup></p>
+                    </div>
+                </div>
+            `;
         });
         fetchData(url.forecast(lat ,lon),(forecastApiResponse)=>{
             const {
                 list: forecastList,
-                city:{sunrise,sunset}
+                city:{timezone}
             } =forecastApiResponse;
 
-            loadingView.classList.toggle("none");
-            footer.classList.toggle("none");
-            document.body.style.overflowY = "hidden";
+//          Updating Temparature and wind Data slider list for next 24 hour
+
+            for(let i=0 ; i<12 ;i++){
+                const {
+                    dt,
+                    main:{temp},
+                    weather:[{description , icon}],
+                    wind:{speed , deg},
+                }= forecastList[i];
+
+                const templi = document.createElement("li");
+                templi.classList.add("slider-item");
+
+//          Updating Temparature Data slider list
+                templi.innerHTML=`
+                        <div class="card card-sm slider-card">
+                            <p class="body-3">${module.getTime(dt, timezone)}</p>
+
+                            <img src="./assets/Images/Icons/${icon}.png" width="48"  loading="lazy" alt="${description}" class="weather-icon">
+                            <p class="body-3">${module.kelvinToCelsius(temp)}&deg;</p>
+                        </div>
+                `
+                tempDataSlider.appendChild(templi);
+
+                const windli = document.createElement("li");
+                windli.classList.add("slider-item");
+
+//          Updating Wind Data slider list
+
+                windli.innerHTML=`
+                        <div class="card card-sm slider-card">
+                            <p class="body-3">${module.getTime(dt, timezone)}</p>
+
+                            <img src="./assets/Images/Icons/direction.png" width="48"  loading="lazy" alt="" class="weather-icon" style="transform: rotate(${deg}deg);">
+                            <p class="body-3">${module.MpSec_to_KMpH(speed)} km/h</p>
+                        </div>
+                `;
+                windDataSlider.appendChild(windli);
+            };
+            for(let i=7; i<= forecastList.length; i+=8){
+                const {
+                    dt,
+                    main:{temp_min ,temp_max},
+                    weather:[{description , icon}]
+                }=forecastList[i];
+                const dailyLi = document.createElement("li");
+                dailyLi.classList.add("forecast-data-item");
+                const date= new Date((dt+ timezone)*1000);
+                dailyLi.innerHTML=`
+                <div class="icon-wrapper">
+                    <img src="./assets/Images/Icons/${icon}.png" width="60" alt="${description}">
+                    <p class="title-2">${module.kelvinToCelsius(temp_max)}</p>
+                </div>
+                <p class="label-1 data-text">${date.getUTCDay()} ${module.monthNames[date.getUTCMonth()]}</p>
+                <p class="label-1 data-text">${module.weekDaysNames[date.getUTCDay()]}</p>
+                `;
+                forecastList5Days.appendChild(dailyLi);
+
+            }
         });
+        loadingView.classList.toggle("none");
+        footer.classList.toggle("none");
+        document.body.style.overflowY = "auto";
     });
 
     

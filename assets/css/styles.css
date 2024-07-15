@@ -53,9 +53,7 @@
     --surface: rgb(29, 28, 31);
   --primary: rgb(181, 161, 229);
   --on-primary: rgb(16, 14, 23);
-  --on-surface: rgb(221, 218, 229);
   --on-surface-variant: rgb(123, 121, 128);
-  --on-surface-variant-2: rgb(185, 182, 191);
   --outline: rgb(62, 61, 64);
   --bg-aqi-1: rgb(137, 229, 137);
   --on-bg-aqi-1: rgb(31, 51, 31);
@@ -72,23 +70,6 @@
   --main-page-icon-color: rgb(90 186 90);
 
 
-
-  /* ----------------------
-    Gradient Colors
-    ----------------------- */
-  --gradient-1: linear-gradient(
-    180deg,
-    rgba(16, 14, 18, 0) 0%,
-    rgba(16, 14, 18, 0.8) 65%,
-    rgb(16, 14, 18) 100%
-  );
---gradient-2: linear-gradient(
-    180deg,
-    rgba(32, 30, 36, 0) 0%,
-    rgba(32, 30, 36, 0.8) 65%,
-    rgb(32, 30, 36) 100%
-  );
-
   /* --------------------
     Typography
     ----------------------- */
@@ -96,21 +77,17 @@
 
   --body-3: 1.6rem;
   --heading: 8rem;
-  --title-1: 3.6rem;
+  --title-1: 140%;
   --title-2: 2.2rem;
   --title-3: 1.6rem;
-  --body-1: 2.2rem;
-  --body-2: 2rem;
   --label-1: 1.4rem;
   --label-2: 1.2rem;
 
-  --weight-regular: 400;
   --weight-semiBold: 600;
   /* --------------------
     Shadow
     ----------------------- */
   --shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.5);
-  --shadow-2: 0px 3px 6px rgba(0, 0, 0, 0.4);
   /* --------------------
     Border
     ----------------------- */
@@ -566,7 +543,7 @@ div.card.current-weather-card{
   min-width: 134px;
   flex: 1 1 100%;
 }
-.hourly-forecast .card-sm {
+.hourly-forecast-section .card-sm {
   padding: 16px;
   display: grid;
   grid-template-rows: min-content 1fr;
@@ -602,8 +579,13 @@ footer {
   padding: 20px;
 }
 .openw-img a{margin-left: 14px;}
+#author{
+  display: inline-block;
 
-
+}
+#author:hover{
+  color: red;
+}
 /* -----------------------------------------------------------------------------------------
                           Error Screen
 -------------------------------------------------------------------------------------------- */
@@ -669,19 +651,11 @@ footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .highlight-card.one .title-1{
-    --title-1:2.8rem;
-  }
-  /* 1380 */
 }
 
 @media screen and (max-width: 1380px) {
   .highlight-list{
     grid-template-columns: 1fr 1fr;
-  }
-  .highlight-card.one .title-1, :root{
-    --title-1:3.8rem;
   }
   .highlight-card.two .card-list .card-item{
     flex-direction: row;
@@ -711,14 +685,9 @@ footer {
   }
 }
 @media screen and (max-width: 1075px){
-  :root{
-    --title-1:2.2rem;
-  }
+
   .highlight-list .material-icon {
     font-size: 3.8rem;
-  }
-  .highlight-card.one .title-1, :root{
-    --title-1:2.8rem;
   }
   header.container{
     height: 100px;
@@ -805,12 +774,14 @@ footer {
   article.container{
     padding: 0 12px 12px 14px;
   }
-  .highlight-card.one .title-1, :root {
-    --title-1: 1.8rem;
-  }
   .highlight-list .material-icon {
     font-size: 3.3rem;
+  }
 }
+@media screen and (max-width: 430px) {
+  .highlight-card.one .title-1{
+    --title-1: 110%;
+  }
 }
 
 

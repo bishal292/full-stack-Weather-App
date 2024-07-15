@@ -354,6 +354,7 @@ header .mat-icon-btn{ /* Buttons used for smaller device is not displayed previo
 }
 .result-items:hover{
   cursor: pointer;
+  background-color: var(--white-alpha-8);
 }
 .result-items .material-icon , .subtitle-text{
   color: var(--on-surface-variant);
@@ -795,7 +796,7 @@ footer {
     overflow: hidden;
   }
   .search-view.active .results-view{
-    height: calc(100vw - 57px);
+    height: calc(100svh - 57px);
   }
 
 }

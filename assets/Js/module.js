@@ -29,7 +29,7 @@ const getDate = (dateUnix , timeZone)=>{
     const dayName = weekDaysNames[date.getUTCDay()];
     const monthName = monthNames[date.getUTCMonth()];
 
-    return `${dayName} ${date.getUTCDay()}, ${monthName}`
+    return `${dayName} ${date.getUTCDate()}, ${monthName}`
 }
 
 const getTime = (timeUnix , timeZone)=>{
@@ -50,7 +50,7 @@ const getHours = (timeUnix , timeZone)=>{
 }
 
 const MpSec_to_KMpH = (mps) =>{
-    return (mps * 3600)/1000;
+    return parseInt((mps * 3600)/1000);
 }
 
 const aqiText ={

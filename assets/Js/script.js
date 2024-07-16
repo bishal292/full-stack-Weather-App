@@ -28,6 +28,14 @@ function addEventOnElements(elements , eventType , Callback){
     });
 }
 
+
+let defaultLocation = {
+    defaultlat:"28.6517178",
+    defaultlon:"77.2219388"
+}
+updateWeatherScreen(defaultLocation.defaultlat , defaultLocation.defaultlon);
+
+
 /*  ------------------------------------------------------------
 For Smaller device for search function toggling
     ------------------------------------------------------------
@@ -92,7 +100,7 @@ function getLatLon(url){
 
 // Dynamic loading for search results
 let searchTimeout = null;
-const searchTimeoutDuration =800; //after each 800ms api is toggled when something is types in search fieeld
+const searchTimeoutDuration =500; //after each 500ms api is toggled when something is types in search fieeld
 searchField.addEventListener("input",()=>{
     searchTimeout ?? clearTimeout(setTimeout);
 
@@ -160,6 +168,8 @@ function updateWeatherScreen(lat , lon){
     currentWeatherCard.innerHTML ="";
     forecastList5Days.innerHTML ="";
     todayHighlightList.innerHTML ="";
+    tempDataSlider.innerHTML="";
+    windDataSlider.innerHTML="";
 
     fetchData(url.currentWeather(lat , lon), (apiResponseData)=>{
         const {
@@ -359,10 +369,10 @@ function updateWeatherScreen(lat , lon){
                 dailyLi.innerHTML=`
                 <div class="icon-wrapper">
                     <img src="./assets/Images/Icons/${icon}.png" width="60" alt="${description}">
-                    <p class="title-2">${module.kelvinToCelsius(temp_max)}</p>
+                    <p class="title-2">${module.kelvinToCelsius(temp_max)}&deg<sub>C</sub></p>
                 </div>
-                <p class="label-1 data-text">${date.getUTCDay()} ${module.monthNames[date.getUTCMonth()]}</p>
-                <p class="label-1 data-text">${module.weekDaysNames[date.getUTCDay()]}</p>
+                <p class="label-1 data-text">${date.getUTCDate()} ${module.monthNames[date.getUTCMonth()]}</p>
+                <p class="label-1 data-text">${module.weekDaysNames[date.getUTCDay()].slice(0,3)}</p>
                 `;
                 forecastList5Days.appendChild(dailyLi);
 
@@ -372,7 +382,14 @@ function updateWeatherScreen(lat , lon){
         footer.classList.toggle("none");
         document.body.style.overflowY = "auto";
     });
-
-    
-
 }
+
+document.querySelector("[data-current-location]").addEventListener("click",()=>{
+    window.navigator.geolocation.getCurrentPosition(res=>{
+        const {latitude , longitude } = res.coords;
+        updateWeatherScreen(latitude , longitude);
+        console.log(`your current location lat : ${latitude} lon :  ${longitude}`);
+    },err=>{
+        console.log(`Some error occured ${err}`);
+    })
+});

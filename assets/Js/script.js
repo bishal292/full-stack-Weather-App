@@ -37,7 +37,6 @@ For Smaller device for search function toggling
     ------------------------------------------------------------
 */
 const searchScreenToggler = ()=>{
-    console.log(`button is clicked`);
     logoImage.classList.toggle("none");
     searchView.classList.toggle("active");
     searchResults.classList.toggle("none");
@@ -62,7 +61,6 @@ document.addEventListener("click",(event)=>{
         if (searchResults.classList.contains("none")) {
             searchResults.classList.toggle("none");
         }
-        console.log(`clicked on search field`);
     }else{
         if(searchResults.classList.contains("active")){
             searchResults.classList.toggle("active");
@@ -101,13 +99,12 @@ searchField.addEventListener("input",()=>{
     searchTimeout ?? clearTimeout(setTimeout);
 
     if(searchField.value){//if search field contains any value
-        console.log(`something is typed in search field: ${searchField.value}`);
+
         searchTimeout = setTimeout(() => { // search using api after each "searchTimeoutDuration"'s value.
             fetchData(url.geo(searchField.value),(locations)=>{
                 const items=[];
                 resultsView.innerHTML="";
                 for(const{name,lat,lon,country,state}of locations){
-                    console.log(name,lat,lon,country,state);
                     const searchlistItem = document.createElement("li")
                     searchlistItem.classList.add("result-items");
                     searchlistItem.innerHTML = `
@@ -138,7 +135,6 @@ searchField.addEventListener("input",()=>{
 
                         var selectedLocation = (item.querySelector("[data-search-toggler]")).toString();
                         const {lat,lon} = getLatLon(selectedLocation);
-                        console.log(`lat : ${lat}  And lon : ${lon}`);
                         updateHash(lat,lon);
                     })
                 });
@@ -149,6 +145,7 @@ searchField.addEventListener("input",()=>{
     }
 });
 
+
 //  UPdates whole weather screen dynamicaly by fetching data from api
 function updateWeatherScreen(lat , lon){
     errorDisplay.style.display= "none";
@@ -156,8 +153,7 @@ function updateWeatherScreen(lat , lon){
     loadingView.classList.toggle("none");
     footer.classList.toggle("none");
     document.body.style.overflowY = "hidden";
-    loadingView.style.top = `${document.querySelector("header").offsetHeight}px`;
-    loadingView.style.height = `${window.innerHeight - document.querySelector("header").offsetHeight}px`;
+    loadingView.style.height = `${window.innerHeight}px`;
 
     // clearing all the inner htmls of the documents which are going to be inserted dynamically.
     currentWeatherCard.innerHTML ="";
@@ -346,7 +342,7 @@ function updateWeatherScreen(lat , lon){
                         <div class="card card-sm slider-card">
                             <p class="body-3">${module.getTime(dt, timezone)}</p>
 
-                            <img src="./assets/Images/Icons/direction.png" width="48"  loading="lazy" alt="" class="weather-icon" style="transform: rotate(${deg}deg);">
+                            <img src="./assets/Images/Icons/direction.png" width="48"  loading="lazy" alt="" class="weather-icon" style="transform: rotate(${180-deg}deg);">
                             <p class="body-3">${module.MpSec_to_KMpH(speed)} km/h</p>
                         </div>
                 `;
@@ -372,10 +368,10 @@ function updateWeatherScreen(lat , lon){
                 forecastList5Days.appendChild(dailyLi);
 
             }
+            loadingView.classList.toggle("none");
+            footer.classList.toggle("none");
+            document.body.style.overflowY = "auto";
         });
-        loadingView.classList.toggle("none");
-        footer.classList.toggle("none");
-        document.body.style.overflowY = "auto";
     });
 }
 
@@ -385,7 +381,6 @@ function updateCurrLocWeather(){
     window.navigator.geolocation.getCurrentPosition(res=>{
         const {latitude , longitude } = res.coords;
         updateHash(latitude,longitude)
-        console.log(`your current location lat : ${latitude} lon :  ${longitude}`);
     },err=>{
         console.log(`Some error occured ${err}`);
         window.location.hash= defaultHash;
@@ -393,10 +388,16 @@ function updateCurrLocWeather(){
 }
 document.querySelector("[data-current-location]").addEventListener("click",updateCurrLocWeather);
 
+
+updateCurrLocWeather();
+
+
 // toggleerror screen
 function toggleerror404(){
     errorDisplay.style.display = "flex";
 }
+
+
 // update window hash or site location in hash/SearchBar.
 function updateHash(lat , lon){
     window.location.hash = `#/weather?lat=${lat}&lon=${lon}`

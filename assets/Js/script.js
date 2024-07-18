@@ -5,6 +5,7 @@ import * as module from './module.js';
             Initial Variables
     ------------------------------------------------------------
 */
+const defaultHash ='#/weather?lat=28.6517178&lon=77.2219388'; // Delhi
 const logoImage = document.querySelector(".logo");
 const searchAndCloseView  = Array.from(document.querySelectorAll(".mat-icon-btn"));
 const searchResults = document.querySelector(".search-results");
@@ -13,6 +14,7 @@ const searchField = document.querySelector(".search-field");
 const resultsView = document.querySelector(".results-view");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
+const errorDisplay = document.querySelector("#error-content");
 
 
 const currentWeatherCard = document.querySelector("[data-current-weeather-card]");
@@ -28,12 +30,6 @@ function addEventOnElements(elements , eventType , Callback){
     });
 }
 
-
-let defaultLocation = {
-    defaultlat:"28.6517178",
-    defaultlon:"77.2219388"
-}
-updateWeatherScreen(defaultLocation.defaultlat , defaultLocation.defaultlon);
 
 
 /*  ------------------------------------------------------------
@@ -143,9 +139,7 @@ searchField.addEventListener("input",()=>{
                         var selectedLocation = (item.querySelector("[data-search-toggler]")).toString();
                         const {lat,lon} = getLatLon(selectedLocation);
                         console.log(`lat : ${lat}  And lon : ${lon}`);
-                        updateWeatherScreen(lat , lon);
-                        // loading.classList.toggle("none");
-                        // footer.classList.toggle("none");
+                        updateHash(lat,lon);
                     })
                 });
             });
@@ -155,8 +149,9 @@ searchField.addEventListener("input",()=>{
     }
 });
 
-
+//  UPdates whole weather screen dynamicaly by fetching data from api
 function updateWeatherScreen(lat , lon){
+    errorDisplay.style.display= "none";
     // Make loading screen visible
     loadingView.classList.toggle("none");
     footer.classList.toggle("none");
@@ -384,12 +379,26 @@ function updateWeatherScreen(lat , lon){
     });
 }
 
-document.querySelector("[data-current-location]").addEventListener("click",()=>{
+
+//  get Current location's Weather 
+function updateCurrLocWeather(){
     window.navigator.geolocation.getCurrentPosition(res=>{
         const {latitude , longitude } = res.coords;
-        updateWeatherScreen(latitude , longitude);
+        updateHash(latitude,longitude)
         console.log(`your current location lat : ${latitude} lon :  ${longitude}`);
     },err=>{
         console.log(`Some error occured ${err}`);
-    })
-});
+        window.location.hash= defaultHash;
+    });
+}
+document.querySelector("[data-current-location]").addEventListener("click",updateCurrLocWeather);
+
+// toggleerror screen
+function toggleerror404(){
+    errorDisplay.style.display = "flex";
+}
+// update window hash or site location in hash/SearchBar.
+function updateHash(lat , lon){
+    window.location.hash = `#/weather?lat=${lat}&lon=${lon}`
+}
+export {updateWeatherScreen , toggleerror404};
